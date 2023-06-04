@@ -1,38 +1,147 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+ 
+body{
+  margin: 0;
+  padding: 0  ;
+  height: 100%;
+  font-family: 'Nunito', 'sans-serif';
 }
+ 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.mainHeader{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 8vh;
+  margin: 0;
+  background-color: rgb(255, 255, 255);
+  background-image: url("./images/fon.jpg");
+  background-size: cover; /* Растягивает картинку, чтобы она заполнила весь фон */
+  background-position: center; 
+  margin-bottom: 10px;
+}
+.mainHeader a{
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 40px;
+   
+  padding: 10px;
   color: white;
 }
+.mainHeader a:hover{
+  background-color: rgb(255, 255, 255, 0.3);
+  
 
-.App-link {
-  color: #61dafb;
+}
+.content{
+  background-color: rgb(255, 255, 255);
+  display:flex;
+  height: 90vh;
+  margin: 0 50px;
+}
+ 
+.search {
+  flex: 3;
+  width: 30%;
+  box-sizing: border-box;
+  
+  height: 100%;
+  padding-right: 5px;
+  resize: horizontal; /* Позволяет изменять ширину только по горизонтали */
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.recipes {
+  overflow: auto;
+  height: 100%;
+  flex: 7;
+  width: 70%; 
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+ 
+}
+.searchInput{
+  width: 100%; /* Здесь мы растягиваем input на всю ширину блока search */
+  box-sizing: border-box;
+  height: 30px;
+  font-size: 20px;
+ 
+}
+.allProducts{
+  overflow: auto;
+  height: 88%;
+}
+.allProductsAdded{
+  overflow: auto;
+  height: 80%;
+  
+  background-color: rgb(244, 244, 244);
+  
+}
+.ingToAdd{
+  
+  height: 50%;
+  background-color: rgb(244, 244, 244);
+ 
+}
+.product{
+   
+  padding-left: 10px;
+}
+.addedIng{
+   
+  height:48%;
+  
+ 
+}
+.addedIng h3{
+  padding-left: 10px;
+  
+}
+.addButton, .product {
+  display: inline;
+}
+.addButton {
+  float: right;
+  border: 0;
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 1px solid rgb(244, 244, 244); 
+}
+.addButton:hover {
+  border: 1px solid black; 
+}
+
+.recipeImg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.recipeImgBlock{
+  width: 100px;  
+  height: 100px;  
+  overflow: hidden;
+}
+.recipe{
+  display: flex;
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: rgb(244, 244, 244);
+  border: 1px solid black;
+}
+.recipeDesc{
+  margin-left: 10px;
+}
+.recipeHeader{
+  display: flex;
+  width: 100%;
+  background-color: rgb(244, 244, 244);
+  margin-bottom: 5px;
+  
+}
+.recipeHeader a{
+  padding: 10px;
+  
 }
