@@ -6,6 +6,7 @@ import React,{ useEffect, useState } from 'react';
 import { Recipes } from './components/Recipes/Recipes';
 import { Search } from './components/Search/Search';
 import { Routes, Route } from 'react-router-dom';
+import { red } from '@mui/material/colors';
 function App() {
 
  
@@ -21,16 +22,16 @@ function App() {
      
        <header className='mainHeader'>
           <a  >HolostiakCooking</a>
-          <a  href = '/search-by-ing'>Поиск по ингридиентам</a>
+          <a  href = '/search-by-ing'>Поиск по ингридиентам < span style = {{color: red}}>(Тут не работает)</span></a>
          
-          <a  href = '/all'>Все рецепты</a>
+          <a  href = '/'>Все рецепты</a>
        
  
        </header>
       
        <div className='content'>
         <Routes> 
-          <Route path='/all' element={<>  
+          <Route path='/' element={<>  
          
         <Recipes/></>} />
         <Route path='/search-by-ing' element={<>  <Search/>

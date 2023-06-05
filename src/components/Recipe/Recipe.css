@@ -1,0 +1,29 @@
+.RecipeMain{
+    display: flex;
+    text-align: center;
+}
+.recipeIngredients{
+    margin-left: 5%;
+    text-align:left;
+}
+.ArrowBackIcon{
+    cursor: pointer;
+    margin-top: 3px;
+}
+ .backSpan{
+    margin-top: 3px;
+    float: left;
+    margin-bottom: 3px;
+ }
+ .backContainer{
+    display: flex;
+    align-items: center;
+    width: 80px;
+    border: 1px solid rgb(255, 255, 255); 
+    cursor: pointer;
+ }
+ .backContainer:hover{
+    background-color: white;
+    border: 1px solid rgb(0, 0, 0); 
+    border-radius: 10px;
+ }

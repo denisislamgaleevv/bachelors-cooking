@@ -2,15 +2,16 @@ import './Recipes.css'
 import React, {useState, useEffect} from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
- 
+import { Recipe } from '../Recipe/Recipe';
 export const Recipes = () =>{
   const [recipes, setRecipes] = useState([]);
   
   const [isVegan, setIsVegan] = useState(false)
   const [isAlcoholFree, setIsAlcoholFree] = useState(false)
   const [isPorkFree, setIsPorkFree] = useState(false)
- 
+  const [tRecipe,  setTRecipe] = useState([])
   const [inputValue, setInputValue] = useState('')
+  const [receipeVisibility, setReceipeVisibility] = useState(false)
   const url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=100`;
   function getIngredientWordForm(count) {
     if (count === 1) {
@@ -61,7 +62,10 @@ export const Recipes = () =>{
     }
     
     )
-   
+   const recipeClickHandler = (recipe) =>{
+    setReceipeVisibility(true)
+    setTRecipe(recipe)
+   }
     return(
       <>  
         {((!isVegan && !isPorkFree && !isAlcoholFree)||
@@ -70,12 +74,12 @@ export const Recipes = () =>{
            
           
           ) )  && (recipe["recipe"]["label"].toLowerCase().includes(inputValue)) ?
-        <div className='recipe'>
+        <div className='recipe'  onClick={() => recipeClickHandler(recipe)}>
       <div className='recipeImgBlock'>  
         <img className="recipeImg" src={recipe["recipe"]["image"]} />
         </div>
         <div>  
-        <h3 className="recipeDesc" key={uuidv4()}>
+        <h3 className="recipeDesc" key={uuidv4()} >
           {recipe["recipe"]["label"]}
         </h3>
            
@@ -88,7 +92,14 @@ export const Recipes = () =>{
   }
   const renderRecipes = ()=>{
     
-    return(
+    if (receipeVisibility)
+      return <Recipe  
+      recipe = {tRecipe} 
+      getIngredientWordForm ={getIngredientWordForm}
+      setReceipeVisibility = {setReceipeVisibility}
+      />
+    
+    else return(
       
       recipes.map((elem)=>  
         renderRecipe(elem))
@@ -130,16 +141,16 @@ export const Recipes = () =>{
        /> </a>
        
     </div>
-
+ 
     {recipes.length !== 0 ? 
 
     
-  renderRecipes()
+      renderRecipes()
     
     
-      : <h3>Loading recipes...</h3>}
+      : <h3>Loading recipes...</h3>} 
     
-    
+       
  
     
   </div>)
