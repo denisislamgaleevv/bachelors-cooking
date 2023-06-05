@@ -22,9 +22,9 @@ function App() {
      
        <header className='mainHeader'>
           <a  >HolostiakCooking</a>
-          <a  href = '/search-by-ing'>Поиск по ингридиентам < span style = {{color: red}}>(Тут не работает)</span></a>
+          <a  href = '/search-by-ing'>Recipe search < span style = {{color: red}}>(test)</span></a>
          
-          <a  href = '/'>Все рецепты</a>
+          <a  href = '/'>All receipes</a>
        
  
        </header>

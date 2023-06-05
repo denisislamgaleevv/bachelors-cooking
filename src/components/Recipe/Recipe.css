@@ -3,8 +3,12 @@
     text-align: center;
 }
 .recipeIngredients{
+    background-color: rgb(244, 244, 244);
     margin-left: 5%;
     text-align:left;
+    border-radius: 10px; 
+    border: 1px solid black;
+    padding: 20px
 }
 .ArrowBackIcon{
     cursor: pointer;

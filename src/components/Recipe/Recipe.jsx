@@ -11,7 +11,7 @@ export const Recipe = ({recipe, getIngredientWordForm, setReceipeVisibility}) =>
 <div className='backContainer' onClick = {()=>setReceipeVisibility(false)}>
      
       <div><ArrowBackIcon className='ArrowBackIcon'/></div>
-      <div><span className = 'backSpan'> Назад</span> </div>
+      <div><span className = 'backSpan'>Back</span> </div>
     </div>
         
          <div className='RecipeMain'  >
@@ -23,8 +23,8 @@ export const Recipe = ({recipe, getIngredientWordForm, setReceipeVisibility}) =>
         </div>
         <div className='recipeIngredients'>  
         
-        <h4  className="recipeIng" >{recipe["recipe"]["ingredientLines"].length} {
-        getIngredientWordForm(recipe["recipe"]["ingredientLines"].length)}:</h4>
+        <h3  className="recipeIng" >{recipe["recipe"]["ingredientLines"].length} {
+        getIngredientWordForm(recipe["recipe"]["ingredientLines"].length)}:</h3>
       {
         recipe["recipe"]["ingredientLines"].map((elem)=>
         <p>- {elem}</p>

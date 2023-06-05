@@ -26,7 +26,7 @@ export const Recipes = () =>{
       try {
         const result = await axios.get(url);
         setRecipes(result.data.hits);
-        
+        console.log(result.data.hits)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
