@@ -12,11 +12,23 @@ body{
   display: flex;
   height: 8vh;
   margin: 0;
-  background-color: rgb(255, 255, 255);
+ 
   background-image: url("./images/fon.jpg");
   background-size: cover; /* Растягивает картинку, чтобы она заполнила весь фон */
   background-position: center; 
   margin-bottom: 10px;
+  
+}
+
+.mainHeader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Здесь можно изменить уровень прозрачности */
+  z-index: -1
 }
 .mainHeader a{
   font-size: 20px;
@@ -34,8 +46,8 @@ body{
 .content{
   background-color: rgb(255, 255, 255);
   display:flex;
-  height: 90vh;
-  margin: 0 50px;
+  height: 89vh;
+  margin: 0 5vh;
 }
  
 .search {
@@ -83,6 +95,9 @@ body{
   background-color: rgb(244, 244, 244);
  
 }
+.productDiv{
+  margin-top: 7px;
+}
 .product{
    
   padding-left: 10px;
@@ -106,9 +121,11 @@ body{
   border-radius: 10px;
   margin-right: 10px;
   border: 1px solid rgb(244, 244, 244); 
+  cursor: pointer;
 }
 .addButton:hover {
-  border: 1px solid black; 
+  background-color: white;
+  border: 1px solid rgb(0, 0, 0); 
 }
 
 .recipeImg{
@@ -131,7 +148,7 @@ body{
   background-color: rgb(244, 244, 244);
   border: 1px solid black;
 }
-.recipeDesc{
+.recipeDesc, .recipeIng{
   margin-left: 10px;
 }
 .recipeHeader{
@@ -144,4 +161,8 @@ body{
 .recipeHeader a{
   padding: 10px;
   
+}
+
+.checkbox{
+  margin-right: 10%;
 }
