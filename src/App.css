@@ -30,14 +30,16 @@ body{
   background-color: rgba(0, 0, 0, 0.5); /* Здесь можно изменить уровень прозрачности */
   z-index: -1
 }
-.mainHeader a{
+.mainHeader a  {
   font-size: 20px;
   text-decoration: none;
   margin-left: 40px;
    
   padding: 10px;
+ 
   color: white;
 }
+ 
 .mainHeader a:hover{
   background-color: rgb(255, 255, 255, 0.3);
   
@@ -160,9 +162,16 @@ body{
 }
 .recipeHeader a{
   padding: 10px;
-  
+  white-space: nowrap;
 }
 
 .checkbox{
   margin-right: 10%;
+  margin-bottom: 15px;
+}
+.searchAllInput{
+   width: 200px;
+  height: 30px;
+  font-size: 20px;
+  
 }
