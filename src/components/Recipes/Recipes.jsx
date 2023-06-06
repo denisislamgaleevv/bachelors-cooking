@@ -4,8 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Recipe } from '../Recipe/Recipe';
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import placeholder from '../../images/placeholder.png'
+ 
 export const Recipes = ({addedIng }) =>{
   const [recipes, setRecipes] = useState([]);
   
@@ -16,7 +15,7 @@ export const Recipes = ({addedIng }) =>{
   const [inputValue, setInputValue] = useState('')
   const [receipeVisibility, setReceipeVisibility] = useState(false)
    
-  let url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=30`;
+  let url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
   
   if (addedIng.length !== 0){
     url = `https://api.edamam.com/search?q=${addedIng}&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
@@ -43,8 +42,6 @@ export const Recipes = ({addedIng }) =>{
     getRecipeInfo();
     
   }, [addedIng]);
-
- 
   const handleIsVeganChange = (event) => {
     setIsVegan(event.target.checked);
   };
@@ -87,13 +84,7 @@ export const Recipes = ({addedIng }) =>{
         <div className='recipe'  onClick={() => recipeClickHandler(recipe)}>
       <div className='recipeImgBlock'> 
        
-        <LazyLoadImage
-         className="recipeImg" 
-         src={recipe["recipe"]["image"]}  
-         alt={`Image Alt`}
-         placeholderSrc={placeholder}
-         effect='blur'
-         />
+        <img className="recipeImg" src={recipe["recipe"]["image"]}   />
          
         </div>
         <div>  
@@ -153,6 +144,8 @@ export const Recipes = ({addedIng }) =>{
       }</> : <></>}
       {!receipeVisibility?
     <div className='recipeHeader'>
+      <div className='leftHeader'>
+      <div className='aAndCheckbox'> 
       <a>Vegetarian</a>
       <input type="checkbox"
       id="myCheckbox" 
@@ -160,7 +153,8 @@ export const Recipes = ({addedIng }) =>{
       checked={isVegan}
       onChange={handleIsVeganChange}
       />
-
+      </div>
+      <div className='aAndCheckbox'> 
       <a>Alcohol-Free</a>
       <input type="checkbox"
       id="myCheckbox" 
@@ -168,6 +162,9 @@ export const Recipes = ({addedIng }) =>{
       checked={isAlcoholFree}
       onChange={handleIsAlcoholFreeChange}
       />
+</div>
+<div className='aAndCheckbox'> 
+
       <a>Pork-Free</a>
        <input type="checkbox"
       id="myCheckbox" 
@@ -175,13 +172,16 @@ export const Recipes = ({addedIng }) =>{
       checked={isPorkFree}
       onChange={handleIsPorkFree}
       />
+</div>
+</div>
+<div className='rightHeader'>
        <a> <input 
        className='searchAllInput' 
        placeholder='Search for recipes'
        value = {inputValue}
        onChange={handleInputValueChange}
        /> </a>
-       
+       </div>
     </div> : <></>}
  
     {recipes.length !== 0 ? 
