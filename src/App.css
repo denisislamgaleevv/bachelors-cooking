@@ -218,7 +218,7 @@ body{
   .mainHeader{
       
   display:grid;
-  height: 16vh;
+  height: 8vh;
   margin: 0;
  
   }
@@ -226,6 +226,7 @@ body{
     float: none;
     display: block;
     text-align: left;
+    padding: 0;
   }
 
   .recipeHeader{
@@ -322,5 +323,13 @@ body{
     width: 100px;
     height: 100px;
   }
-  
+  .RecipeMain{
+   
+    flex-direction: column;
+  }
+  .recipeIngredients{
+   
+    width:  73%;
+    
+  }
 }
