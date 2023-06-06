@@ -6,7 +6,7 @@ import React,{ useEffect, useState } from 'react';
 import { Recipes } from './components/Recipes/Recipes';
 import { Search } from './components/Search/Search';
 import { Routes, Route } from 'react-router-dom';
-import { red } from '@mui/material/colors';
+ 
 function App() {
 
  
@@ -17,7 +17,7 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
      
   const addIng = (ing) =>{
- 
+    
     setAddedIng((addedIng) => [...addedIng, ing]);
     const updatedItems = ingredients.filter(ingredient => ingredient !== ing);
     setIngredients(updatedItems);

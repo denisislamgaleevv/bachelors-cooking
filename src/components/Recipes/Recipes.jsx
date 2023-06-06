@@ -3,7 +3,10 @@ import React, {useState, useEffect} from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Recipe } from '../Recipe/Recipe';
-export const Recipes = ({addedIng}) =>{
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import placeholder from '../../images/placeholder.png'
+export const Recipes = ({addedIng }) =>{
   const [recipes, setRecipes] = useState([]);
   
   const [isVegan, setIsVegan] = useState(false)
@@ -13,7 +16,7 @@ export const Recipes = ({addedIng}) =>{
   const [inputValue, setInputValue] = useState('')
   const [receipeVisibility, setReceipeVisibility] = useState(false)
    
-  let url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
+  let url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=30`;
   
   if (addedIng.length !== 0){
     url = `https://api.edamam.com/search?q=${addedIng}&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
@@ -40,6 +43,8 @@ export const Recipes = ({addedIng}) =>{
     getRecipeInfo();
     
   }, [addedIng]);
+
+ 
   const handleIsVeganChange = (event) => {
     setIsVegan(event.target.checked);
   };
@@ -80,8 +85,16 @@ export const Recipes = ({addedIng}) =>{
           
           ) )  && (recipe["recipe"]["label"].toLowerCase().includes(inputValue)) ?
         <div className='recipe'  onClick={() => recipeClickHandler(recipe)}>
-      <div className='recipeImgBlock'>  
-        <img className="recipeImg" src={recipe["recipe"]["image"]} />
+      <div className='recipeImgBlock'> 
+       
+        <LazyLoadImage
+         className="recipeImg" 
+         src={recipe["recipe"]["image"]}  
+         alt={`Image Alt`}
+         placeholderSrc={placeholder}
+         effect='blur'
+         />
+         
         </div>
         <div>  
         <h3 className="recipeDesc" key={uuidv4()} >
