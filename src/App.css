@@ -84,7 +84,7 @@ body{
 }
 .allProducts{
   overflow: auto;
-  height: 88%;
+  height: 75%;
 }
 .allProductsAdded{
   overflow: auto;
@@ -108,7 +108,7 @@ body{
 }
 .addedIng{
    
-  height:48%;
+  height:100%;
   
  
 }

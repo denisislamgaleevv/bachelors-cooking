@@ -6,50 +6,82 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
-export const Search =() =>{
-    const url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=10`;
-    const [recipes, setRecipes] = useState([]);
-    const [ingredients, setIngredients] = useState([]);
-    const [addedIng, setAddedIng]=useState([]);
-    useEffect(() => {
-        const getRecipeInfo = async () => {
-          try {
-            const result = await axios.get(url);
-            setRecipes(result.data.hits);
-            
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        };
+export const Search =({addIng, addedIng, deleteIng, ingredients, setIngredients}) =>{
     
-        getRecipeInfo();
-        recipes.map((elem)=>{
-            elem.recipe.ingredients.map((ing) => 
-                setIngredients(ingredients => [...ingredients, ing.text])
-            )
-             
-          })
-        
-      }, [recipes]);
+     
+   
 
-    const addIng = (ing) =>{
-        const copy = addedIng
-        copy.push(ing)
-        setAddedIng(  copy)
-    }
-    const deleteIng = (ing) =>{
-
-    }
+    
+      const foods = [
+        'beef',
+        'chicken',
+        'pork',
+        'lamb',
+        'rabbit',
+        'broccoli',
+        'carrot',
+        'tomato',
+        'cucumber',
+        'spinach',
+        'apple',
+        'banana',
+        'orange',
+        'pear',
+        'strawberry',
+        'wine',
+        'beer',
+        'vodka',
+        'rum',
+        'whiskey',
+        'bread',
+        'pasta',
+        'rice',
+        'grain',
+        'macaroni',
+        'turkey',
+        'duck',
+        'sausage',
+        'bacon',
+        'cheese',
+        'cabbage',
+        'onion',
+        'pepper',
+        'potato',
+        'mango',
+        'pomegranate',
+        'apricot',
+        'plum',
+        'lemon',
+        'vodka',
+        'champagne',
+        'cognac',
+        'liqueur',
+        'whiskey',
+        'baguette',
+      ];
+       const [inputValue, setInputValue] = useState('')
+      const handleInputValueChange = (e) =>{
+        setInputValue(e.target.value)
+      }
+   
     return(
       
         <div className='search'>
              
           <div className='ingToAdd'>  
-            <input className='searchInput' placeholder='Search for ingredients'/>
+          <h3>Select the main ingredient:</h3>
+            <input 
+            className='searchInput' 
+            placeholder='Search for ingredients'
+            value = {inputValue}
+            onChange={handleInputValueChange}
+            />
             <div className='allProducts'> 
-            {ingredients.length !== 0?
+            {foods.length !== 0?
             <>  
-            {ingredients.map((elem, index) => 
+            {foods.filter((element) =>  element.toLowerCase().includes(inputValue.toLowerCase()))
+            
+            .map((elem, index) => 
                 <div className='productDiv'>  
                 <p className='product'>{index+1}) {elem} </p>
                 <AddIcon className='addButton' onClick ={  ()=> addIng(elem)}/> 
@@ -60,14 +92,18 @@ export const Search =() =>{
              
                 }
             </div>
-          </div>
-          <div className='addedIng'>
+             <div className='addedIng'>
             <h3>Added ingredients:</h3>
             <div className='allProductsAdded'> 
             {
-            addedIng.length != 0? <>  {
-            addedIng.map((elem, index)=>
-             <div className='productDiv'>  <p className='product'>{index+1}) {elem} </p><DeleteOutlineIcon className='addButton'/> </div>
+           addedIng.length != 0? <>  {
+              addedIng.map((elem, index)=>
+             <div className='productDiv'>  <p className='product'>{index+1}) {elem}
+              </p><DeleteOutlineIcon 
+              className='addButton' 
+              onClick = {() =>deleteIng(elem)}
+              
+              /> </div>
             
             )
                 }</>:<p>You haven't added anything yet</p>
@@ -75,6 +111,8 @@ export const Search =() =>{
             
                </div>
           </div>
+          </div>
+          
         </div>
     )
 }

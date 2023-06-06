@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { Recipe } from '../Recipe/Recipe';
-export const Recipes = () =>{
+export const Recipes = ({addedIng}) =>{
   const [recipes, setRecipes] = useState([]);
   
   const [isVegan, setIsVegan] = useState(false)
@@ -12,7 +12,12 @@ export const Recipes = () =>{
   const [tRecipe,  setTRecipe] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [receipeVisibility, setReceipeVisibility] = useState(false)
-  const url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=100`;
+   
+  let url = `https://api.edamam.com/search?q=*20&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
+  
+  if (addedIng.length !== 0){
+    url = `https://api.edamam.com/search?q=${addedIng}&app_id=c1e82fe7&app_key=02a57a9699c30154207dcdae0893170b&to=20`;
+  }
   function getIngredientWordForm(count) {
     if (count === 1) {
       return 'ingredient';
@@ -34,7 +39,7 @@ export const Recipes = () =>{
 
     getRecipeInfo();
     
-  }, []);
+  }, [addedIng]);
   const handleIsVeganChange = (event) => {
     setIsVegan(event.target.checked);
   };
@@ -105,11 +110,35 @@ export const Recipes = () =>{
         renderRecipe(elem))
       )
   }
-
+  function convertArrayToString(arr) {
+    if (arr.length === 0) {
+      return "";
+    }
+  
+    const firstElement = arr[0].charAt(0).toUpperCase() + arr[0].slice(1);
+    if (arr.length === 1) {
+      return firstElement;
+    }
+    const remainingElements = arr.slice(1).join(" & ");
+  
+    return firstElement + " & " + remainingElements;
+  }
 
   //main return
   return(
     <div className='recipes'>
+       {!receipeVisibility?
+       <>  
+       {addedIng.length === 0?  
+      <h3 className = 'recipeIndicator'>
+        All receipes
+        </h3>
+        :
+        <h3 className = 'recipeIndicator'>
+        {convertArrayToString(addedIng)} receipes
+        </h3>
+      }</> : <></>}
+      {!receipeVisibility?
     <div className='recipeHeader'>
       <a>Vegetarian</a>
       <input type="checkbox"
@@ -140,7 +169,7 @@ export const Recipes = () =>{
        onChange={handleInputValueChange}
        /> </a>
        
-    </div>
+    </div> : <></>}
  
     {recipes.length !== 0 ? 
 

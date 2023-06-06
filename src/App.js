@@ -13,7 +13,21 @@ function App() {
    
   const YOUR_APP_ID = `c1e82fe7`;
   const YOUR_APP_KEY = "02a57a9699c30154207dcdae0893170b";
-  
+  const [addedIng, setAddedIng]=useState([]);
+  const [ingredients, setIngredients] = useState([]);
+     
+  const addIng = (ing) =>{
+ 
+    setAddedIng((addedIng) => [...addedIng, ing]);
+    const updatedItems = ingredients.filter(ingredient => ingredient !== ing);
+    setIngredients(updatedItems);
+  }
+  const deleteIng = (ing) =>{
+    const updatedItems = addedIng.filter(addedIng => addedIng !== ing);
+    setAddedIng(updatedItems);
+
+    setIngredients((ingredients) => [...ingredients, ing]);
+  }
  
   return (
 
@@ -22,20 +36,26 @@ function App() {
      
        <header className='mainHeader'>
           <a  >HolostiakCooking</a>
-          <a  href = '/search-by-ing'>Recipe search < span style = {{color: red}}>(test)</span></a>
+          <a  href = '/'>Recipe search</a>
          
-          <a  href = '/'>All receipes</a>
-       
- 
        </header>
       
        <div className='content'>
         <Routes> 
-          <Route path='/' element={<>  
          
-        <Recipes/></>} />
-        <Route path='/search-by-ing' element={<>  <Search/>
-        <Recipes/></>} />
+        <Route path='/' element={<>  
+        <Search addIng ={addIng}
+        addedIng ={addedIng}
+        deleteIng ={deleteIng }
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+        />
+         
+         
+        
+        <Recipes addedIng = {addedIng} />
+        
+        </>} />
        
         </Routes>
        </div>
