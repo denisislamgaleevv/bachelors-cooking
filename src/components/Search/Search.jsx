@@ -69,7 +69,7 @@ export const Search =({addIng, addedIng, deleteIng, ingredients, setIngredients}
         <div className='search'>
              
           <div className='ingToAdd'>  
-          <h3>Select the main ingredient:</h3>
+          <h3>Select main ingredients:</h3>
             <input 
             className='searchInput' 
             placeholder='Search for ingredients'
@@ -92,7 +92,9 @@ export const Search =({addIng, addedIng, deleteIng, ingredients, setIngredients}
              
                 }
             </div>
-             <div className='addedIng'>
+             
+          </div>
+          <div className='addedIng'>
             <h3>Added ingredients:</h3>
             <div className='allProductsAdded'> 
             {
@@ -111,8 +113,6 @@ export const Search =({addIng, addedIng, deleteIng, ingredients, setIngredients}
             
                </div>
           </div>
-          </div>
-          
         </div>
     )
 }

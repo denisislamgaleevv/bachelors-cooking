@@ -1,23 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
- 
-body{
+body {
   margin: 0;
-  padding: 0  ;
+  padding: 0;
   height: 100%;
-  font-family: 'Nunito', 'sans-serif';
+  font-family: 'Nunito', sans-serif;
 }
- 
 
-.mainHeader{
-  
+.mainHeader {
   display: flex;
   height: 8vh;
   margin: 0;
- 
   background-image: url("./images/fon.jpg");
-  background-size: cover;  
-  background-position: center; 
-  
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
 .mainHeader::before {
@@ -27,51 +23,36 @@ body{
   left: 0;
   width: 100%;
   height: 8vh;
-  background-color: rgba(0, 0, 0, 0.5);  
-  z-index: -1
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
 }
-.mainHeader a  {
+
+.mainHeader a {
   font-size: 20px;
   text-decoration: none;
   margin-left: 40px;
-   
   padding: 10px;
- 
   color: white;
 }
- 
-.mainHeader a:hover{
-  background-color: rgb(255, 255, 255, 0.3);
-  
 
+.mainHeader a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-
-
-
-
-
-
-
-
-.content{ 
- 
-  
+.content {
   background-color: rgb(255, 255, 255);
-  display:flex;
+  display: flex;
   height: 89vh;
   margin: 0 5vh;
-  
 }
- 
+
 .search {
-  flex: 3;
-  width: 30%;
+  flex: 2;
+  width: 20%;
   box-sizing: border-box;
-  
   height: 100%;
   padding-right: 5px;
-  resize: horizontal; /* Позволяет изменять ширину только по горизонтали */
+  resize: horizontal;
   margin-top: 10px;
 }
 
@@ -79,100 +60,97 @@ body{
   overflow: auto;
   height: 100%;
   flex: 7;
-  width: 70%; 
+  width: 70%;
   box-sizing: border-box;
   padding: 10px;
   background-color: rgb(255, 255, 255);
- 
 }
-.searchInput{
-  width: 100%; /* Здесь мы растягиваем input на всю ширину блока search */
+
+.searchInput,
+.searchAllInput {
+  width: 95%;
   box-sizing: border-box;
   height: 30px;
   font-size: 20px;
- 
 }
-.allProducts{
+
+.allProducts,
+.allProductsAdded,
+.ingToAdd {
   overflow: auto;
   height: 75%;
-}
-.allProductsAdded{
-  overflow: auto;
-  height: 80%;
-  
   background-color: rgb(244, 244, 244);
-  
 }
-.ingToAdd{
-  
-  height: 50%;
-  background-color: rgb(244, 244, 244);
- 
-}
-.productDiv{
+
+.productDiv {
   margin-top: 7px;
 }
-.product{
-   
+
+.product {
   padding-left: 10px;
 }
-.addedIng{
-   
-  height:100%;
-  
- 
-}
-.aAndCheckbox{
-  width: 200px;
- 
 
+.addedIng {
+  height: 25%;
 }
-.aAndCheckbox a, .aAndCheckbox input {
+
+.aAndCheckbox {
+  width: 200px;
+}
+
+.aAndCheckbox a,
+.aAndCheckbox input {
   display: inline-block;
   vertical-align: middle;
 }
+
 .aAndCheckbox a {
-  width: 70px /* Пример ширины для ссылки */
+  width: 70px;
 }
 
 .aAndCheckbox input {
-  width: 50px; /* Пример ширины для текстового поля */
+  width: 50px;
   margin-top: 15px;
 }
 
-.addedIng h3{
- 
+.addedIng h3 {
   padding-left: 10px;
   padding-top: 10px;
 }
-.addButton, .product {
+
+.addButton,
+.product {
   display: inline;
 }
+
 .addButton {
   float: right;
   border: 0;
   border-radius: 10px;
   margin-right: 10px;
-  border: 1px solid rgb(244, 244, 244); 
+  border: 1px solid rgb(244, 244, 244);
   cursor: pointer;
 }
+
 .addButton:hover {
   background-color: white;
-  border: 1px solid rgb(0, 0, 0); 
+  border: 1px solid rgb(0, 0, 0);
 }
 
-.recipeImg{
+.recipeImg {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
 }
-.recipeImgBlock{
-  width: 100px;  
-  height: 100px;  
+
+.recipeImgBlock {
+  width: 200px;
+  height: 200px;
   overflow: hidden;
 }
-.recipe{
+
+.recipe {
   display: flex;
   background-color: white;
   padding: 5px;
@@ -181,47 +159,43 @@ body{
   background-color: rgb(244, 244, 244);
   border: 1px solid black;
 }
-.recipeDesc, .recipeIng{
+
+.recipeDesc,
+.recipeIng {
   margin: 0;
   margin-top: 10px;
   margin-left: 10px;
-
 }
- 
-.recipeHeader{
+
+.recipeHeader {
   display: flex;
   width: 100%;
   background-color: rgb(244, 244, 244);
   margin-bottom: 5px;
-  
 }
-.recipeHeader a{
+
+.recipeHeader a {
   padding: 10px;
   white-space: nowrap;
 }
 
-.checkbox{
+.checkbox {
   margin-right: 10%;
   margin-bottom: 15px;
 }
-.searchAllInput{
-   width: 200px;
-  height: 30px;
-  font-size: 20px;
-  
-}
-.leftHeader{
+
+.leftHeader {
   width: 100%;
   display: flex;
 }
+
 @media screen and (max-width: 800px) {
-  .mainHeader{
-      
-  display:grid;
-  height: 8vh;
-  margin: 0;
- 
+  .mainHeader {
+    display: grid;
+    height: 8vh;
+    margin: 0;
   }
+
   .mainHeader a {
     float: none;
     display: block;
@@ -229,107 +203,106 @@ body{
     padding: 0;
   }
 
-  .recipeHeader{
-    display:grid;
+  .recipeHeader {
+    display: grid;
     margin: 0;
     padding: 0;
-    
   }
-  .recipeHeader a{
+
+  .recipeHeader a {
     margin: 0;
     float: none;
     display: block;
     text-align: left;
     padding: 0;
-   
   }
 
-
-
-  .aAndCheckbox{
+  .aAndCheckbox {
     width: 200px;
-   
-  
   }
-  .aAndCheckbox a, .aAndCheckbox input {
+
+  .aAndCheckbox a,
+  .aAndCheckbox input {
     display: inline-block;
     vertical-align: middle;
   }
+
   .aAndCheckbox a {
-    width: 70px /* Пример ширины для ссылки */
+    width: 70px;
   }
-  
+
   .aAndCheckbox input {
-    width: 50px; /* Пример ширины для текстового поля */
+    width: 50px;
     margin-top: 15px;
     margin-left: 10px;
   }
-  .recipeHeader{
+
+  .recipeHeader {
     display: flex;
   }
-  .leftHeader{
+
+  .leftHeader {
     width: 40%;
     display: inline-block;
     padding-left: 10px;
   }
-  .rightHeader{
+
+  .rightHeader {
     padding-left: 10px;
     margin-top: 10px;
     width: 50%;
   }
-  .product{
+
+  .product {
     font-size: 11px;
-    
   }
-  .productDiv{
+
+  .productDiv {
     padding-top: 4px;
     padding-bottom: 4px;
   }
-  .content{ 
- 
+
+  .content {
     font-size: 14px;
     background-color: rgb(255, 255, 255);
-    display:flex;
+    display: flex;
     height: 89vh;
     margin: 0 1vh;
-    
   }
-   .searchAllInput{
-     
+
+  .searchAllInput {
     width: 85%;
     height: 20px;
     font-size: 11px;
     margin-left: 10%;
-   }
+  }
 
-   .searchInput{
+  .searchInput {
     width: 100%;
     height: 20px;
     font-size: 11px;
-   }
-   .recipes {
- 
-    flex: 6;
-    width: 60%; 
-    
   }
-  .ingToAdd{
-  
+
+  .recipes {
+    flex: 6;
+    width: 60%;
+  }
+
+  .ingToAdd {
     height: 59%;
     background-color: rgb(244, 244, 244);
-   
   }
-  .recipeImgBlock{
+
+  .recipeImgBlock {
     width: 100px;
     height: 100px;
   }
-  .RecipeMain{
-   
+
+  .RecipeMain {
     flex-direction: column;
   }
-  .recipeIngredients{
-   
-    width:  73%;
-    
+
+  .recipeIngredients {
+    width: 73%;
   }
 }
