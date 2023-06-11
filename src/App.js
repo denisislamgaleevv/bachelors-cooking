@@ -6,11 +6,20 @@ import React,{ useEffect, useState } from 'react';
 import { Recipes } from './components/Recipes/Recipes';
 import { Search } from './components/Search/Search';
 import { Routes, Route } from 'react-router-dom';
- 
+import { useDispatch, useSelector } from 'react-redux';
 function App() {
 
- 
+  const dispatch = useDispatch()
+  const cash = useSelector(state => state.cash.cash)
+  const customers = useSelector(state => state.customers.customers)
    
+  const addCash =(cash) =>{
+    dispatch({type:'ADD_CASH', payload: cash})
+  }
+  const getCash =(cash) =>{
+    dispatch({type:'GET_CASH', payload: cash})
+  }
+ 
   const YOUR_APP_ID = `c1e82fe7`;
   const YOUR_APP_KEY = "02a57a9699c30154207dcdae0893170b";
   const [addedIng, setAddedIng]=useState([]);
@@ -44,7 +53,8 @@ function App() {
         <Routes> 
          
         <Route path='/' element={<>  
-        <Search addIng ={addIng}
+        <Search 
+        addIng ={addIng}
         addedIng ={addedIng}
         deleteIng ={deleteIng }
         ingredients={ingredients}
