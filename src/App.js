@@ -24,12 +24,14 @@ function App() {
   const YOUR_APP_KEY = "02a57a9699c30154207dcdae0893170b";
   const [addedIng, setAddedIng]=useState([]);
   const [ingredients, setIngredients] = useState([]);
-     
+  const [isLoading, setIsLoading] = useState(false)
   const addIng = (ing) =>{
     
     setAddedIng((addedIng) => [...addedIng, ing]);
     const updatedItems = ingredients.filter(ingredient => ingredient !== ing);
     setIngredients(updatedItems);
+    setIsLoading(true)
+    setTimeout(function(){setIsLoading(false)}, 2000)
   }
   const deleteIng = (ing) =>{
     const updatedItems = addedIng.filter(addedIng => addedIng !== ing);
@@ -63,7 +65,9 @@ function App() {
          
          
         
-        <Recipes addedIng = {addedIng} />
+        <Recipes addedIng = {addedIng} 
+        isLoading = {isLoading}
+        />
         
         </>} />
        

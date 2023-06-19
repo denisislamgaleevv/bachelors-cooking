@@ -5,7 +5,7 @@ import axios from "axios";
 import { Recipe } from '../Recipe/Recipe';
 import { LazyLoadImage } from "react-lazy-load-image-component";
  
-export const Recipes = ({addedIng }) =>{
+export const Recipes = ({addedIng, isLoading}) =>{
   const [recipes, setRecipes] = useState([]);
   
   const [isVegan, setIsVegan] = useState(false)
@@ -183,13 +183,14 @@ export const Recipes = ({addedIng }) =>{
        /> </a>
        </div>
     </div> : <></>}
- 
-    {recipes.length !== 0 ? 
-
-    
+    <>
+      {console.log(isLoading)}</>
+    {recipes.length !== 0 && !isLoading? 
+       
+        
       renderRecipes()
     
-    
+       
       : <h3>Loading recipes...</h3>} 
     
        
